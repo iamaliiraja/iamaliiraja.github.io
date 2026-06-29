@@ -3,26 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Photon Technology — Apps</title>
+  <title>Photon Technology — Mobile Games</title>
+  <meta name="description" content="Photon Technology builds addictive mobile games — Ballvolt and Tap Traffic. Easy to pick up, impossible to put down." />
+  <meta property="og:title" content="Photon Technology — Mobile Games" />
+  <meta property="og:description" content="Addictive mobile games, easy to pick up and impossible to put down." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800;900&display=swap" rel="stylesheet" />
   <style>
-    body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-      background:linear-gradient(160deg,#bdecff,#7ec850); color:#16324a; }
-    .card { background:#fff; padding:40px 34px; border-radius:20px; box-shadow:0 14px 40px rgba(0,0,0,.12); text-align:center; max-width:440px; }
-    h1 { margin:0 0 8px; }
-    a { color:#2e86de; text-decoration:none; }
-    ul { list-style:none; padding:0; }
-    li { margin:8px 0; font-size:18px; }
+    :root { --lime:#c6f24a; --blue:#3a9bf0; --ink:#0c1430; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif; color:#eaf1ff; background:#070b1c; -webkit-font-smoothing:antialiased; }
+    a { color:inherit; text-decoration:none; }
+
+    /* ---- hero ---- */
+    .hero { position:relative; text-align:center; padding:90px 20px 70px; overflow:hidden;
+      background:radial-gradient(1100px 520px at 50% -10%, #2a4cad 0%, #14225a 42%, #070b1c 78%); }
+    .hero::after { content:''; position:absolute; inset:0; pointer-events:none;
+      background:radial-gradient(420px 220px at 78% 12%, rgba(198,242,74,.18), transparent 70%),
+                 radial-gradient(420px 240px at 18% 8%, rgba(58,155,240,.22), transparent 70%); }
+    .brand { position:relative; z-index:1; display:inline-flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.5px; font-size:15px; color:#bcd0ff; text-transform:uppercase; }
+    .brand .dot { width:13px; height:13px; border-radius:50%; background:linear-gradient(180deg,var(--lime),#6fb828); box-shadow:0 0 18px rgba(198,242,74,.7); }
+    .hero h1 { position:relative; z-index:1; margin:18px auto 14px; font-size:clamp(34px,7vw,64px); font-weight:900; line-height:1.05; max-width:760px; }
+    .hero h1 .g { background:linear-gradient(180deg,#eaffba,var(--lime)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .hero p { position:relative; z-index:1; font-size:clamp(15px,2.4vw,19px); color:#aebfe6; max-width:540px; margin:0 auto; font-weight:500; }
+
+    /* ---- games ---- */
+    .games { max-width:980px; margin:0 auto; padding:10px 20px 40px; display:grid; gap:22px; grid-template-columns:1fr 1fr; }
+    @media (max-width:760px){ .games{ grid-template-columns:1fr; } }
+    .card { position:relative; background:linear-gradient(180deg,rgba(26,38,86,.9),rgba(14,22,52,.94));
+      border:1.5px solid rgba(120,160,255,.22); border-radius:24px; padding:26px 24px;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 18px 40px rgba(0,0,0,.45); transition:transform .15s ease, box-shadow .15s ease; }
+    .card:hover { transform:translateY(-4px); box-shadow:inset 0 1px 0 rgba(255,255,255,.1), 0 24px 50px rgba(0,0,0,.55); }
+    .card-top { display:flex; align-items:center; gap:16px; }
+    .ic { width:84px; height:84px; border-radius:20px; flex:none; box-shadow:0 8px 20px rgba(0,0,0,.45), inset 0 0 0 1.5px rgba(255,255,255,.08); display:grid; place-items:center; font-size:42px; }
+    .ic img { width:100%; height:100%; border-radius:20px; display:block; }
+    .ic.traffic { background:linear-gradient(160deg,#5db3ff,#2a6fd0); }
+    .card h2 { font-size:23px; font-weight:800; }
+    .chips { margin-top:7px; display:flex; flex-wrap:wrap; gap:6px; }
+    .chip { font-size:11px; font-weight:700; letter-spacing:.4px; padding:4px 10px; border-radius:999px; background:rgba(120,160,255,.16); color:#bcd0ff; }
+    .card p.desc { margin:16px 0 18px; color:#b9c7ec; font-size:14.5px; line-height:1.55; font-weight:500; }
+    .links { display:flex; flex-wrap:wrap; gap:9px; align-items:center; }
+    .btn { font-weight:700; font-size:13px; padding:9px 15px; border-radius:12px; border:1.5px solid rgba(140,175,255,.3); color:#dbe6ff; background:rgba(255,255,255,.04); }
+    .btn:hover { background:rgba(255,255,255,.09); }
+    .btn.store { border:none; color:#08210f; background:linear-gradient(180deg,#9bff7f,#3ac06a); box-shadow:0 5px 0 #1c8a4a; }
+    .btn.store.soon { color:#cfe; background:rgba(255,255,255,.08); box-shadow:none; border:1.5px dashed rgba(140,175,255,.35); cursor:default; }
+
+    /* ---- footer ---- */
+    footer { text-align:center; padding:40px 20px 56px; color:#8094c4; font-size:13px; border-top:1px solid rgba(120,160,255,.12); margin-top:20px; }
+    footer a { color:#9fc0ff; }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Our Apps</h1>
-    <p>Mobile games and apps.</p>
-    <ul>
-      <li>🚗 <strong>Tap Traffic — Road Rush</strong></li>
-      <li><a href="./taptraffic-privacy/">Privacy Policy</a> · <a href="./taptraffic-privacy/support.html">Support</a></li>
-    </ul>
-  </div>
+  <header class="hero">
+    <div class="brand"><span class="dot"></span> Photon Technology</div>
+    <h1>We make games worth <span class="g">one more try.</span></h1>
+    <p>Fast, juicy mobile games — easy to pick up, impossible to put down.</p>
+  </header>
+
+  <main class="games">
+    <!-- Ballvolt -->
+    <section class="card">
+      <div class="card-top">
+        <div class="ic"><img src="ballvolt.png" alt="Ballvolt icon" /></div>
+        <div>
+          <h2>Ballvolt</h2>
+          <div class="chips"><span class="chip">Arcade</span><span class="chip">Action</span><span class="chip">Roguelite</span></div>
+        </div>
+      </div>
+      <p class="desc">Aim. Blast. Shatter the swarm. A cannon-vs-falling-numbers roguelite with 100+ levels, epic multi-phase bosses, power-balls and a deep loadout of weapons, abilities and drones.</p>
+      <div class="links">
+        <span class="btn store soon">iOS — Coming Soon</span>
+        <a class="btn" href="./ballvolt-privacy/">Privacy</a>
+        <a class="btn" href="./ballvolt-privacy/support.html">Support</a>
+      </div>
+    </section>
+
+    <!-- Tap Traffic -->
+    <section class="card">
+      <div class="card-top">
+        <div class="ic traffic">🚗</div>
+        <div>
+          <h2>Tap Traffic — Road Rush</h2>
+          <div class="chips"><span class="chip">Arcade</span><span class="chip">Casual</span><span class="chip">One-Tap</span></div>
+        </div>
+      </div>
+      <p class="desc">Time your taps, weave through racing traffic and chain near-misses without crashing. Simple to learn, addictive to master — a pure one-thumb arcade rush.</p>
+      <div class="links">
+        <span class="btn store soon">iOS — Coming Soon</span>
+        <a class="btn" href="./taptraffic-privacy/">Privacy</a>
+        <a class="btn" href="./taptraffic-privacy/support.html">Support</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Contact: <a href="mailto:alii.raja.666@gmail.com">alii.raja.666@gmail.com</a></p>
+    <p style="margin-top:8px">© 2026 Photon Technology. All rights reserved.</p>
+  </footer>
 </body>
 </html>
